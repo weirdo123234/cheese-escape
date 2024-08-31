@@ -1,0 +1,434 @@
+-- Import Rayfield
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+-- Create a new window
+local Window = Rayfield:CreateWindow({
+    Name = "Cheese Escape v1.0.6",
+    LoadingTitle = "Loading Cheese Escape",
+    LoadingSubtitle = "By medium!",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = "Cheese Escape v1.0.6", -- Create a custom folder for your hub/game
+        FileName = "cheese-config"
+    },
+    Discord = {
+        Enabled = true,
+        Invite = "U3gTPZfYsG", -- The Discord invite code, do not include discord.gg/
+        RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = true, -- Set this to true to use our key system
+    KeySettings = {
+        Title = "Cheese Escape",
+        Subtitle = "Key System",
+        Note = "Get Key from Discord.",
+        FileName = "CheeseEscapeKey",
+        SaveKey = false,
+        GrabKeyFromSite = false, -- If this is true, set Key to the site you want to grab the key from
+        Key = "duckcmds"
+    }
+})
+
+-- Create a new tab
+local SpawnTab = Window:CreateTab("Spawn") -- Title, Image
+local errorTab = Window:CreateTab("Error") -- Title, Image
+local dscTab = Window:CreateTab("Discord") -- Title, Image
+local MainTab = Window:CreateTab("Finish") -- Title, Image
+local KeyTab = Window:CreateTab("Keys") -- Title, Image
+local BadgeTab = Window:CreateTab("Badges") -- Title, Image
+local OthersTab = Window:CreateTab("Others") -- Title, Image
+local randomTab = Window:CreateTab("Random") -- Title, Image
+local opTab = Window:CreateTab("OP") -- Title, Image
+local scriptTab = Window:CreateTab("Scripts") -- Title, Image
+
+-- Add buttons to the tab
+
+Callback = function()
+Rayfield:Notify({
+    Title = "Cheese Escape",
+    Content = "Script has loaded.",
+    Duration = 5
+})
+end
+Callback()
+
+MainTab:CreateButton({
+    Name = "Finish Game",
+    Callback = function()
+        game.Players.LocalPlayer.StatsFolder.PassedTheGame.Value = true
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15,5,-22)
+    end
+})
+
+KeyTab:CreateButton({
+    Name = "Key Teleport",
+    Callback = function()
+        -- Show key teleport options
+        Rayfield:Notify({
+            Title = "Key Teleport",
+            Content = "Select a key to teleport to",
+            Duration = 5,
+            Actions = { -- Notification buttons
+                Green = {
+                    Name = "Green",
+                    Callback = function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-274,4,-36)
+                    end
+                },
+                Yellow = {
+                    Name = "Yellow",
+                    Callback = function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(54,27,-482)
+                    end
+                },
+                Red = {
+                    Name = "Red",
+                    Callback = function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(62,4,-453)
+                    end
+                },
+                Blue = {
+                    Name = "Blue",
+                    Callback = function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-112,47,-79)
+                    end
+                }
+            }
+        })
+    end
+})
+
+SpawnTab:CreateButton({
+    Name = "Spawn",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-12,5,-12)
+    end
+})
+
+KeyTab:CreateButton({
+    Name = "Red Cheese",
+    Callback = function()
+        if game.Players.LocalPlayer.StatsFolder.PassedTheGame.Value == true then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-13,5,-76)
+            game.Players.LocalPlayer.StatsFolder.PressedTheButton.Value = true
+        else
+            Rayfield:Notify({
+                Title = "Red Cheese",
+                Content = "Please Click \"Finish Game\" to do this.",
+                Duration = 2
+            })
+        end
+    end
+})
+
+OthersTab:CreateButton({
+    Name = "Obby",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-25,100,-1039)
+    end
+})
+
+BadgeTab:CreateButton({
+    Name = "??? Badge",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21,100,-1533)
+    end
+})
+
+OthersTab:CreateButton({
+    Name = "Credits",
+    Callback = function()
+        Rayfield:Notify({
+            Title = "Credits",
+            Content = "Developed by Medium, UI Edited by chroniosis/ded.api.",
+            Duration = 5
+        })
+    end
+
+    
+})
+
+local sitToggleActive = false
+
+OthersTab:CreateButton({
+    Name = "Troll Walk",
+    Callback = function()
+                Rayfield:Notify({
+            Title = "Troll Walk",
+            Content = "To stop Troll Walk please click again.",
+            Duration = 5
+        })
+        sitToggleActive = not sitToggleActive
+        local player = game.Players.LocalPlayer
+        local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+        
+        while sitToggleActive do
+            humanoid.Sit = true
+            task.wait(0.1)
+            humanoid.Sit = false
+            task.wait(0.1)
+        end
+    end
+})
+
+randomTab:CreateButton({
+    Name = "Something Disgusting in Console",
+    Callback = function()
+        Rayfield:Notify({
+            Title = "Cheese Escape",
+            Content = "Check Console.",
+            Duration = 3
+        })
+        print("asshole lick")
+ end
+})
+
+randomTab:CreateButton({
+    Name = "Get 12 Cheese",
+    Callback = function()
+    game.Players.LocalPlayer.leaderstats.Cheese.Value = 12
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "12 Cheese has been awarded. (You can only see.)",
+        Duration = 5
+    })
+    end
+})
+
+randomTab:CreateButton({
+    Name = "Message from Medium",
+    Callback = function()
+    Rayfield:Notify({
+        Title = "medium",
+        Content = "Thanks for supporting Cheese Escape, - medium.",
+        Duration = 5
+    })
+    end
+})
+
+SpawnTab:CreateButton({
+    Name = "Reset",
+    Callback = function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "You have been Reset.",
+        Duration = 3
+    })
+    end
+})
+
+randomTab:CreateButton({
+    Name = "Break Game",
+    Callback = function()
+    workspace:ClearAllChildren()
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "Game is broken.",
+        Duration = 5
+    })
+    end
+})
+
+OthersTab:CreateButton({
+    Name = "Run",
+    Callback = function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "You are running.",
+        Duration = 2
+    })
+    end
+})
+
+OthersTab:CreateButton({
+    Name = "Un-Run",
+    Callback = function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+        Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "You aren't running.",
+        Duration = 2
+    })
+    end
+})
+
+OthersTab:CreateButton({
+    Name = "Kick",
+    Callback = function()
+    game.Players.LocalPlayer:Kick("Cheese Escape has kicked you.")
+    Rayfield:Notify({
+        Title = "Kick Failed",
+        Content = "The Kick has failed if you aren't kicked, please re-try, if that doesn't work, please contact medium.",
+        Duration = 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    })
+    end
+})
+
+opTab:CreateButton({
+    Name = "Remove Rat",
+    Callback = function()
+    workspace.Mouse:Destroy()
+    workspace.NewMouse:Destroy()
+    workspace.NewRatLocation:Destroy()
+    workspace.TeleportPointNewRat:Destroy()
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "Rat has been removed.",
+        Duration = 5
+    })
+    end
+})
+
+KeyTab:CreateButton({
+    Name = "Key Door Teleport",
+    Callback = function()
+        -- Show key teleport options
+        Rayfield:Notify({
+            Title = "Key Door Teleport",
+            Content = "Select a key door to teleport to",
+            Duration = 5,
+            Actions = { -- Notification buttons
+                Green = {
+                    Name = "Green",
+                    Callback = function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-203,4,-183)
+                    end
+                },
+                Yellow = {
+                    Name = "Yellow",
+                    Callback = function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-73,4,-120)
+                    end
+                },
+                Red = {
+                    Name = "Red",
+                    Callback = function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-199,4,-148)
+                    end
+                },
+                Blue = {
+                    Name = "Blue",
+                    Callback = function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-260,48,-180)
+                    end
+                }
+            }
+        })
+    end
+})
+
+scriptTab:CreateButton({
+    Name = "Infinite Yield",
+    Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true)()
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "Infinite Yield has loaded!",
+        Duration = 3
+    })
+    end
+})
+
+scriptTab:CreateButton({
+    Name = "Orca Hub",
+    Callback = function()
+    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/orca/master/public/snapshot.lua"))()
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "Orca Hub has loaded.",
+        Duration = 5
+    })
+    end
+})
+
+opTab:CreateButton({
+    Name = "Final Door",
+    Callback = function()
+    workspace.Door22:Destroy()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-146,4,-193)
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "If you want to get across please execute Infinite Yield and do the float command.",
+        Duration = 8
+    })
+    end
+})
+
+randomTab:CreateButton({
+    Name = "Open Cheese Pressing Door Forever",
+    Callback = function()
+    workspace.SignToOpenDoor:Destroy()
+    task.wait(1)
+    workspace.Door:Destroy()
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "The Cheese Pressing Door has opened!",
+        Duration = 5
+    })
+    end
+})
+
+randomTab:CreateButton({
+    Name = "Key Doors Remove",
+    Callback = function()
+    workspace.DoorKey:Destroy()
+    task.wait(.1)
+    workspace.DoorKey2:Destroy()
+    task.wait(.1)
+    workspace.DoorKey3:Destroy()
+    task.wait(.1)
+    workspace.DoorKey6:Destroy()
+    task.wait(.1)
+    workspace.DoorKey7:Destroy()
+    task.wait(.1)
+    workspace.DoorKey9:Destroy()
+    task.wait(.1)
+    workspace.DoorKey10:Destroy()
+    task.wait(.7)
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "Key Doors Removed",
+        Duration = 5
+    })
+    end
+})
+
+errorTab:CreateButton({
+    Name = "If you had a error click here!",
+    Callback = function()
+    task.wait(.001)
+    Rayfield:Notify({
+        Title = "Error System",
+        Content = "If it said Callback Error, it means it has already been done, do not take this as serious, leave the game and rejoin.",
+        Duration = 15
+    })
+    end
+})
+
+dscTab:CreateButton({
+    Name = "Discord Invite",
+    Callback = function()
+    inv = "discord.gg/U3gTPZfYsG"
+    print(inv)
+    task.wait(.001)
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "Invite is in the console.",
+        Duration = 5
+    })
+    end
+})
+
+randomTab:CreateButton({
+    Name = "Remove Spawn Door",
+    Callback = function()
+    workspace.DoorAtSpawn:Destroy()
+    task.wait(.001)
+    Rayfield:Notify({
+        Title = "Cheese Escape",
+        Content = "Spawn Door has been removed.",
+    })
+    end
+})
+
